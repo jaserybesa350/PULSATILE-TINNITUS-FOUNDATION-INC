@@ -8,14 +8,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* 👇 只加这一行，完全不影响样式！只为字体优化 */
+        /* 只加这一行：字体秒显，不改变任何样式 */
         @font-face { font-family: 'Font Awesome 6 Free'; font-display: swap; }
         
         html { scroll-behavior: smooth; }
         
         .hero-gradient { 
-            background: linear-gradient(rgba(0, 51, 100, 0.7), rgba(0, 128, 128, 0.6)), 
-            url('https://images.unsplash.com/photo-1506166848124-17d6c11617b5?auto=format&fit=crop&w=1200&q=80'); 
+            background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 128, 128, 0.6)), 
+            url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80'); 
             background-size: cover; 
             background-position: center; 
         }
@@ -65,7 +65,7 @@
             <p class="text-xl md:text-2xl mb-10 text-slate-100">You are not alone. We are dedicated to helping everyone affected by tinnitus find balance in life.</p>
             <div class="flex flex-col md:flex-row gap-4 justify-center">
                 <a href="#knowledge" class="bg-white text-teal-900 px-8 py-3 rounded-full font-bold hover:bg-teal-50 transition shadow-lg">What is Pulsatile Tinnitus?</a>
-                <a href="#donate" class="bg-teal-600 text-white border border-teal-400 px-8 py-3 rounded-full hover:bg-teal-700 transition">Donate Now</a>
+                <a href="#donate" class="bg-teal-600 text-white border border-teal-400 px-8 py-3 rounded-full font-bold hover:bg-teal-700 transition">Donate Now</a>
             </div>
         </div>
     </section>
@@ -247,15 +247,17 @@
             const item = button.parentElement;
             const isActive = item.classList.contains('active');
             
-            document.querySelectorAll('.faq-item').forEach(otherItem => {
-                if (otherItem !== item) otherItem.classList.remove('active');
-            });
+            requestAnimationFrame(() => {
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) otherItem.classList.remove('active');
+                });
 
-            if (!isActive) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
+                if (!isActive) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
         }
     </script>
 </body>
