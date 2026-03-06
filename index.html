@@ -6,35 +6,43 @@
     <title>PULSATILE TINNITUS FOUNDATION INC | Hear the Silence</title>
     
     <link rel="preconnect" href="https://images.unsplash.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=60" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=70" fetchpriority="high">
 
-    <script src="https://cdn.tailwindcss.com" async></script>
+    <script src="https://cdn.tailwindcss.com?minify=true" async></script>
+    
     <style>
-        /* 关键路径 CSS：在 JS 加载前保证首屏不白屏 */
-        body { margin: 0; background-color: #f8fafc; font-family: sans-serif; }
-        .hero-gradient { 
-            background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 128, 128, 0.6)), 
-            url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=60'); 
-            background-size: cover; background-position: center; height: 100vh; display: flex; align-items: center; justify-content: center;
-        }
-        nav { position: fixed; width: 100%; height: 80px; background: rgba(255,255,255,0.9); z-index: 50; }
-        /* 字体交换策略 */
-        @font-face { font-family: 'FontAwesome'; font-display: swap; }
+        /* 1. 字体显示优化：解决 70ms 延迟 */
+        @font-face { font-family: 'Font Awesome 6 Free'; font-display: swap; }
         
         html { scroll-behavior: smooth; }
+        
+        .hero-gradient { 
+            background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 128, 128, 0.6)), 
+            url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=70'); 
+            background-size: cover; background-position: center; 
+        }
+
+        /* 2. 优化触摸目标：解决点击空间不足 */
+        .faq-item button {
+            min-height: 48px; /* 满足移动端最小点击标准 */
+            padding: 1.5rem;
+        }
+
         .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; }
         .faq-item.active .faq-content { max-height: 500px; }
+        
         .blog-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        
+        /* 提升图像渲染效率 */
+        img { height: auto; font-display: swap; }
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm" role="navigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 font-bold text-teal-800 text-xl tracking-tight">
@@ -52,178 +60,181 @@
         </div>
     </nav>
 
-    <section id="home" class="hero-gradient h-screen flex items-center justify-center text-center text-white pt-20">
-        <div class="max-w-4xl px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Hear the Silence, Protect the Sound</h1>
-            <p class="text-xl md:text-2xl mb-10 text-slate-100">You are not alone. We are dedicated to helping everyone affected by tinnitus find balance in life.</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#knowledge" class="bg-white text-teal-900 px-8 py-3 rounded-full font-bold hover:bg-teal-50 transition shadow-lg">What is Pulsatile Tinnitus?</a>
-                <a href="#donate" class="bg-teal-600 text-white border border-teal-400 px-8 py-3 rounded-full font-bold hover:bg-teal-700 transition">Donate Now</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="mission" class="py-24 max-w-7xl mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-3xl font-bold text-blue-900 mb-6 border-l-4 border-teal-500 pl-4">Our Mission</h2>
-                <p class="text-lg leading-relaxed text-slate-600 mb-6">
-                    PULSATILE TINNITUS FOUNDATION INC is a non-profit organization based in New York. Our mission is:
-                </p>
-                <ul class="space-y-4">
-                    <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Public Education:</strong> Eliminating misdiagnosis and fear caused by information asymmetry.</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Scientific Prevention:</strong> Promoting the 60/60 rule to protect hearing health.</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Psychological Support:</strong> Building a global mutual aid network to reduce patient anxiety.</span></li>
-                </ul>
-            </div>
-            <div class="rounded-2xl overflow-hidden shadow-2xl bg-slate-200">
-                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=700&q=60" alt="Medical Communication" loading="lazy" decoding="async">
-            </div>
-        </div>
-    </section>
-
-    <section id="knowledge" class="py-24 bg-blue-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-16 underline decoration-teal-400 underline-offset-8 uppercase tracking-widest">Hearing Health & Resources</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="bg-blue-800 p-8 rounded-xl shadow-inner border border-blue-700/50">
-                    <i class="fa-solid fa-stethoscope text-4xl text-teal-400 mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">Pulsatile vs Regular</h3>
-                    <p class="text-slate-300">Pulsatile tinnitus typically rhythms with your heartbeat, often reflecting vascular issues. Medical imaging is prioritized.</p>
-                </div>
-                <div class="bg-blue-800 p-8 rounded-xl shadow-inner border border-blue-700/50">
-                    <i class="fa-solid fa-ear-listen text-4xl text-teal-400 mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">60/60 Rule</h3>
-                    <p class="text-slate-300">Volume under 60%, duration under 60 minutes. This is the simplest effective preventive measure.</p>
-                </div>
-                <div class="bg-blue-800 p-8 rounded-xl shadow-inner border border-blue-700/50">
-                    <i class="fa-solid fa-brain text-4xl text-teal-400 mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">TRT Training</h3>
-                    <p class="text-slate-300">Tinnitus Retraining Therapy (TRT) helps the brain filter out irrelevant tinnitus signals through sound therapy.</p>
+    <main id="main-content">
+        <section id="home" class="hero-gradient h-screen flex items-center justify-center text-center text-white pt-20">
+            <div class="max-w-4xl px-4">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Hear the Silence, Protect the Sound</h1>
+                <p class="text-xl md:text-2xl mb-10 text-slate-100">You are not alone. We are dedicated to helping everyone affected by tinnitus find balance in life.</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="#knowledge" class="bg-white text-teal-900 px-8 py-3 rounded-full font-bold hover:bg-teal-50 transition shadow-lg">What is Pulsatile Tinnitus?</a>
+                    <a href="#donate" class="bg-teal-600 text-white border border-teal-400 px-8 py-3 rounded-full font-bold hover:bg-teal-700 transition">Donate Now</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="cases" class="py-24 max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-blue-900 mb-16">SUCCESS STORIES</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition">
-                <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded mb-4 font-bold uppercase">Vascular Case</span>
-                <h4 class="text-xl font-bold mb-2 text-blue-900">Sarah J.'s Return to Quiet</h4>
-                <p class="text-slate-500 mb-4 italic text-sm border-l-2 border-slate-200 pl-3">"I thought I would spend the rest of my life in that whooshing sound."</p>
-                <p class="text-slate-600">Diagnosed with Sigmoid Sinus Diverticulum via MRA. Symptoms fully disappeared after a minimally invasive procedure.</p>
-            </div>
-            <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition">
-                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mb-4 font-bold uppercase">Neurological Case</span>
-                <h4 class="text-xl font-bold mb-2 text-blue-900">Mr. Zhang's Harmony</h4>
-                <p class="text-slate-500 mb-4 italic text-sm border-l-2 border-slate-200 pl-3">"The sound is still there, but it no longer bothers me."</p>
-                <p class="text-slate-600">Through three months of CBT and background sound exercises, he successfully reduced his emotional reaction to tinnitus.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="py-24 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+        <section id="mission" class="py-24 max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl font-bold text-blue-900 uppercase">Educational Blog</h2>
-                    <p class="text-slate-500 mt-2">Latest research and hearing protection insights from our experts.</p>
+                    <h2 class="text-3xl font-bold text-blue-900 mb-6 border-l-4 border-teal-500 pl-4">Our Mission</h2>
+                    <p class="text-lg leading-relaxed text-slate-600 mb-6">
+                        PULSATILE TINNITUS FOUNDATION INC is a non-profit organization based in New York. Our mission is:
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Public Education:</strong> Eliminating misdiagnosis and fear caused by information asymmetry.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Scientific Prevention:</strong> Promoting the 60/60 rule to protect hearing health.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Psychological Support:</strong> Building a global mutual aid network to reduce patient anxiety.</span></li>
+                    </ul>
                 </div>
-                <a href="blog-list.html" class="text-teal-600 font-bold hover:text-teal-700 transition flex items-center">
-                    VIEW ALL 20+ ARTICLES <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
-                </a>
+                <div class="rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1100&q=75" 
+                         alt="Medical Communication" 
+                         width="1100" height="1168"
+                         fetchpriority="high"
+                         decoding="async">
+                </div>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <a href="blog-1.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
-                    <img src="https://images.unsplash.com/photo-1579154233763-540306c48393?auto=format&fit=crop&w=500&q=60" 
-                         onerror="this.src='https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&w=500&q=60'"
-                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Diagnostics" loading="lazy" decoding="async">
-                    <div class="p-6">
-                        <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Diagnostics</span>
-                        <h4 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">MRA vs. CTV: The Golden Standard for PT Diagnosis</h4>
-                        <p class="text-slate-600 text-sm mt-3 line-clamp-2 italic">Why standard MRIs often fail PT patients and what to ask your doctor...</p>
-                        <div class="mt-4 pt-4 border-t border-slate-50 text-teal-600 text-xs font-bold uppercase tracking-tighter">Read Full Analysis</div>
+        <section id="knowledge" class="py-24 bg-blue-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-16 underline decoration-teal-400 underline-offset-8 uppercase tracking-widest">Hearing Health & Resources</h2>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="bg-blue-800 p-8 rounded-xl shadow-inner border border-blue-700/50">
+                        <i class="fa-solid fa-stethoscope text-4xl text-teal-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Pulsatile vs Regular</h3>
+                        <p class="text-slate-300">Pulsatile tinnitus typically rhythms with your heartbeat, often reflecting vascular issues. Medical imaging is prioritized.</p>
                     </div>
-                </a>
-
-                <a href="blog-2.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
-                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=500&q=60" 
-                         onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=500&q=60'"
-                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Treatment" loading="lazy" decoding="async">
-                    <div class="p-6">
-                        <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Treatment</span>
-                        <h4 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">Bimodal Stimulation: A New Frontier</h4>
-                        <p class="text-slate-600 text-sm mt-3 line-clamp-2 italic">Training the brain to ignore phantom sounds through neural pathways...</p>
-                        <div class="mt-4 pt-4 border-t border-slate-50 text-teal-600 text-xs font-bold uppercase tracking-tighter">Read Full Analysis</div>
+                    <div class="bg-blue-800 p-8 rounded-xl shadow-inner border border-blue-700/50">
+                        <i class="fa-solid fa-ear-listen text-4xl text-teal-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">60/60 Rule</h3>
+                        <p class="text-slate-300">Volume under 60%, duration under 60 minutes. This is the simplest effective preventive measure.</p>
                     </div>
-                </a>
-
-                <a href="blog-3.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
-                    <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=500&q=60" 
-                         onerror="this.src='https://images.unsplash.com/photo-1516715667182-c511116bd367?auto=format&fit=crop&w=500&q=60'"
-                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Prevention" loading="lazy" decoding="async">
-                    <div class="p-6">
-                        <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Prevention</span>
-                        <h4 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">The 60/60 Rule: Saving Your Hearing</h4>
-                        <p class="text-slate-600 text-sm mt-3 line-clamp-2 italic">The biological defense mechanism for your inner ear hair cells...</p>
-                        <div class="mt-4 pt-4 border-t border-slate-50 text-teal-600 text-xs font-bold uppercase tracking-tighter">Read Full Analysis</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="py-24 bg-slate-100">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-blue-900 mb-12 uppercase">Common Questions (FAQ)</h2>
-            <div class="space-y-4">
-                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
-                        <span class="font-bold text-lg">Does tinnitus lead to deafness?</span>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content">
-                        <p class="p-6 pt-0 text-slate-600 leading-relaxed">Tinnitus itself is a symptom, not a disease that causes deafness. However, it can accompany hearing loss, so medical evaluation is highly recommended.</p>
-                    </div>
-                </div>
-                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
-                        <span class="font-bold text-lg">What tests are needed for Pulsatile Tinnitus?</span>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content">
-                        <p class="p-6 pt-0 text-slate-600 leading-relaxed">We recommend consulting a specialist for MRA, CTV, or High-Resolution CT scans to rule out vascular causes such as stenosis or malformations.</p>
-                    </div>
-                </div>
-                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
-                        <span class="font-bold text-lg">Can stress make my tinnitus worse?</span>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content">
-                        <p class="p-6 pt-0 text-slate-600 leading-relaxed">Yes, stress can increase blood pressure and heighten the nervous system's sensitivity, often making the perception of tinnitus louder and more distressing.</p>
+                    <div class="bg-blue-800 p-8 rounded-xl shadow-inner border border-blue-700/50">
+                        <i class="fa-solid fa-brain text-4xl text-teal-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">TRT Training</h3>
+                        <p class="text-slate-300">Tinnitus Retraining Therapy (TRT) helps the brain filter out irrelevant tinnitus signals through sound therapy.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="donate" class="py-24 max-w-4xl mx-auto px-4 text-center border-t border-slate-200">
-        <h2 class="text-3xl font-bold text-blue-900 mb-6 uppercase tracking-tighter">Support Our Cause</h2>
-        <div class="bg-teal-50 p-12 rounded-3xl border-2 border-dashed border-teal-300 shadow-inner">
-            <p class="text-lg text-slate-700 mb-8 leading-relaxed">
-                Thank you for your willingness to help. For the security and compliance of donations, we currently only accept offline transfers or email consultations.
-            </p>
-            <div class="flex flex-col items-center space-y-4">
-                <a href="mailto:contact@pulsatiletinnitusnyc.org" class="text-2xl font-bold text-teal-800 hover:text-teal-600 transition underline decoration-teal-300 underline-offset-8">
-                    contact@pulsatiletinnitusnyc.org
-                </a>
-                <p class="text-slate-500 font-mono text-sm uppercase tracking-widest mt-4">PO Box 369, Bearsville, New York 12409</p>
+        <section id="cases" class="py-24 max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-16">SUCCESS STORIES</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition">
+                    <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded mb-4 font-bold uppercase">Vascular Case</span>
+                    <h3 class="text-xl font-bold mb-2 text-blue-900">Sarah J.'s Return to Quiet</h3>
+                    <p class="text-slate-500 mb-4 italic text-sm border-l-2 border-slate-200 pl-3">"I thought I would spend the rest of my life in that whooshing sound."</p>
+                    <p class="text-slate-600">Diagnosed with Sigmoid Sinus Diverticulum via MRA. Symptoms fully disappeared after a minimally invasive procedure.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mb-4 font-bold uppercase">Neurological Case</span>
+                    <h3 class="text-xl font-bold mb-2 text-blue-900">Mr. Zhang's Harmony</h3>
+                    <p class="text-slate-500 mb-4 italic text-sm border-l-2 border-slate-200 pl-3">"The sound is still there, but it no longer bothers me."</p>
+                    <p class="text-slate-600">Through three months of CBT and background sound exercises, he successfully reduced his emotional reaction to tinnitus.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="blog" class="py-24 bg-white border-t border-slate-100">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                    <div>
+                        <h2 class="text-3xl font-bold text-blue-900 uppercase">Educational Blog</h2>
+                        <p class="text-slate-500 mt-2">Latest research and hearing protection insights from our experts.</p>
+                    </div>
+                    <a href="blog-list.html" class="text-teal-600 font-bold hover:text-teal-700 transition flex items-center">
+                        VIEW ALL 20+ ARTICLES <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <a href="blog-1.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=70" 
+                             class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Diagnostics" loading="lazy" decoding="async">
+                        <div class="p-6">
+                            <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Diagnostics</span>
+                            <h3 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">MRA vs. CTV: The Golden Standard for PT Diagnosis</h3>
+                            <p class="text-slate-600 text-sm mt-3 line-clamp-2 italic">Why standard MRIs often fail PT patients and what to ask your doctor...</p>
+                            <div class="mt-4 pt-4 border-t border-slate-50 text-teal-600 text-xs font-bold uppercase tracking-tighter">Read Full Analysis</div>
+                        </div>
+                    </a>
+
+                    <a href="blog-2.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
+                        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=800&q=70" 
+                             class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Treatment" loading="lazy" decoding="async">
+                        <div class="p-6">
+                            <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Treatment</span>
+                            <h3 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">Bimodal Stimulation: A New Frontier</h3>
+                            <p class="text-slate-600 text-sm mt-3 line-clamp-2 italic">Training the brain to ignore phantom sounds through neural pathways...</p>
+                            <div class="mt-4 pt-4 border-t border-slate-50 text-teal-600 text-xs font-bold uppercase tracking-tighter">Read Full Analysis</div>
+                        </div>
+                    </a>
+
+                    <a href="blog-3.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
+                        <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=800&q=70" 
+                             class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Prevention" loading="lazy" decoding="async">
+                        <div class="p-6">
+                            <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Prevention</span>
+                            <h3 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">The 60/60 Rule: Saving Your Hearing</h3>
+                            <p class="text-slate-600 text-sm mt-3 line-clamp-2 italic">The biological defense mechanism for your inner ear hair cells...</p>
+                            <div class="mt-4 pt-4 border-t border-slate-50 text-teal-600 text-xs font-bold uppercase tracking-tighter">Read Full Analysis</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-24 bg-slate-100">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-12 uppercase">Common Questions (FAQ)</h2>
+                <div class="space-y-4">
+                    <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200">
+                        <button class="w-full flex justify-between items-center text-left focus:outline-none" onclick="toggleFAQ(this)" aria-expanded="false">
+                            <span class="font-bold text-lg">Does tinnitus lead to deafness?</span>
+                            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
+                        </button>
+                        <div class="faq-content">
+                            <p class="p-6 pt-0 text-slate-600 leading-relaxed">Tinnitus itself is a symptom, not a disease that causes deafness. However, it can accompany hearing loss, so medical evaluation is highly recommended.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200">
+                        <button class="w-full flex justify-between items-center text-left focus:outline-none" onclick="toggleFAQ(this)" aria-expanded="false">
+                            <span class="font-bold text-lg">What tests are needed for Pulsatile Tinnitus?</span>
+                            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
+                        </button>
+                        <div class="faq-content">
+                            <p class="p-6 pt-0 text-slate-600 leading-relaxed">We recommend consulting a specialist for MRA, CTV, or High-Resolution CT scans to rule out vascular causes such as stenosis or malformations.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200">
+                        <button class="w-full flex justify-between items-center text-left focus:outline-none" onclick="toggleFAQ(this)" aria-expanded="false">
+                            <span class="font-bold text-lg">Can stress make my tinnitus worse?</span>
+                            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
+                        </button>
+                        <div class="faq-content">
+                            <p class="p-6 pt-0 text-slate-600 leading-relaxed">Yes, stress can increase blood pressure and heighten the nervous system's sensitivity, often making the perception of tinnitus louder and more distressing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="donate" class="py-24 max-w-4xl mx-auto px-4 text-center border-t border-slate-200">
+            <h2 class="text-3xl font-bold text-blue-900 mb-6 uppercase tracking-tighter">Support Our Cause</h2>
+            <div class="bg-teal-50 p-12 rounded-3xl border-2 border-dashed border-teal-300 shadow-inner">
+                <p class="text-lg text-slate-700 mb-8 leading-relaxed">
+                    Thank you for your willingness to help. For the security and compliance of donations, we currently only accept offline transfers or email consultations.
+                </p>
+                <div class="flex flex-col items-center space-y-4">
+                    <a href="mailto:contact@pulsatiletinnitusnyc.org" class="text-2xl font-bold text-teal-800 hover:text-teal-600 transition underline decoration-teal-300 underline-offset-8">
+                        contact@pulsatiletinnitusnyc.org
+                    </a>
+                    <p class="text-slate-500 font-mono text-sm uppercase tracking-widest mt-4">PO Box 369, Bearsville, New York 12409</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="bg-blue-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 text-center">
@@ -238,8 +249,14 @@
         function toggleFAQ(button) {
             const item = button.parentElement;
             const isActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(otherItem => otherItem.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
+            document.querySelectorAll('.faq-item').forEach(otherItem => {
+                otherItem.classList.remove('active');
+                otherItem.querySelector('button').setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
+            }
         }
     </script>
 </body>
