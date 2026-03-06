@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Detail | PT Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <nav class="bg-white shadow-sm py-4">
+        <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-teal-800 font-bold tracking-tight">← BACK TO HOME</a>
+            <div class="text-blue-900 font-semibold text-sm">PULSATILE TINNITUS FOUNDATION</div>
+        </div>
+    </nav>
+
+    <article class="max-w-3xl mx-auto px-4 py-16">
+        <div id="article-header" class="mb-8">
+            <span id="post-tag" class="bg-teal-100 text-teal-800 text-xs font-bold px-2 py-1 rounded uppercase">Research</span>
+            <h1 id="post-title" class="text-4xl font-extrabold text-blue-900 mt-4 leading-tight">Loading Article...</h1>
+            <div class="h-1 w-20 bg-teal-500 mt-6"></div>
+        </div>
+
+        <div id="post-content" class="prose prose-lg prose-slate max-w-none text-slate-700 leading-relaxed space-y-6">
+            </div>
+
+        <div class="mt-16 p-8 bg-blue-900 rounded-3xl text-white text-center">
+            <h3 class="text-xl font-bold mb-4">Support Our Research</h3>
+            <p class="text-blue-100 mb-6 text-sm">Your donations help us create more educational content like this.</p>
+            <a href="index.html#donate" class="bg-teal-500 text-white px-8 py-3 rounded-full font-bold">Donate to Foundation</a>
+        </div>
+    </article>
+
+    <footer class="py-12 text-center text-slate-400 text-xs">
+        © 2026 PULSATILE TINNITUS FOUNDATION INC. <br>
+        Disclaimer: This content is for educational purposes and is not medical advice.
+    </footer>
+
+    <script>
+        // 这里存储 20 篇文章的完整文案
+        const blogDatabase = {
+            1: {
+                tag: "Diagnostics",
+                title: "MRA vs. CTV: The Golden Standard for PT Diagnosis",
+                content: `
+                    <p>For many Pulsatile Tinnitus (PT) patients, the journey begins with a standard MRI. When the results come back "normal," patients often feel gaslit or hopeless. However, PT is frequently a <b>vascular</b> issue, not a brain tissue issue.</p>
+                    <p><b>The Limitation of MRI:</b> A routine MRI scans the brain's structure but often lacks the resolution to see the small veins and arteries surrounding the ear.</p>
+                    
+                    <p><b>Why CTV is essential:</b> Computed Tomography Venography (CTV) uses contrast dye to highlight the venous sinuses. It is specifically designed to find Venous Sinus Stenosis (VSS) or Diverticulums. If you hear a "whooshing" that stops when you press on your neck (jugular vein), you must ask for a CTV or MRV.</p>
+                `
+            },
+            2: {
+                tag: "Treatment",
+                title: "Bimodal Stimulation: A New Hope for Silence",
+                content: `
+                    <p>The latest research in 2026 focuses on <b>Bimodal Neuromodulation</b>. This doesn't treat the ear; it treats the brain's reaction to sound.</p>
+                    
+
+[Image of the auditory cortex of the human brain]
+
+                    <p>By using a device that provides synchronized sound and gentle electrical pulses to the tongue, the brain's attention is "pulled" away from the tinnitus signal. Clinical data shows that after 12 weeks, the neurons responsible for the phantom sound begin to quiet down through a process called Long-Term Depression (LTD) of neural synapses.</p>
+                `
+            },
+            // ... 你可以继续添加 3 到 20 的内容
+        };
+
+        // 获取 URL 参数 id
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        if (postId && blogDatabase[postId]) {
+            const post = blogDatabase[postId];
+            document.title = post.title + " | PT Foundation";
+            document.getElementById('post-tag').innerText = post.tag;
+            document.getElementById('post-title').innerText = post.title;
+            document.getElementById('post-content').innerHTML = post.content;
+        } else {
+            document.getElementById('post-title').innerText = "Article Not Found";
+        }
+    </script>
+</body>
+</html>

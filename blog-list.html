@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Resources Archive | Pulsatile Tinnitus Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .blog-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .blog-card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px rgba(0,0,0,0.1); }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50 py-5 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-teal-800 font-bold flex items-center group">
+                <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition"></i> BACK TO HOME
+            </a>
+            <div class="hidden md:block font-extrabold text-blue-900 tracking-tighter text-lg">
+                PULSATILE TINNITUS <span class="text-teal-600">RESEARCH HUB</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-blue-900 text-white py-20 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <h1 class="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tight">Educational Resources</h1>
+            <p class="text-blue-100 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+                Empowering patients with 20+ deep-dive articles on diagnostics, surgical interventions, and sound therapy.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-16">
+        
+        <div class="flex flex-wrap gap-3 mb-16 justify-center">
+            <button class="bg-teal-600 text-white px-8 py-2.5 rounded-full font-bold shadow-lg shadow-teal-600/20">All Topics</button>
+            <button class="bg-white text-slate-600 px-6 py-2.5 rounded-full font-bold hover:bg-teal-50 border border-slate-200 transition">Diagnostics</button>
+            <button class="bg-white text-slate-600 px-6 py-2.5 rounded-full font-bold hover:bg-teal-50 border border-slate-200 transition">Surgical</button>
+            <button class="bg-white text-slate-600 px-6 py-2.5 rounded-full font-bold hover:bg-teal-50 border border-slate-200 transition">Therapy</button>
+        </div>
+
+        <div id="blog-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <a href="blog-1.html" class="blog-card bg-white rounded-3xl overflow-hidden border border-slate-100 flex flex-col group">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1579154233763-540306c48393?auto=format&fit=crop&w=800&q=80" 
+                         onerror="this.src='https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&w=800&q=80'"
+                         class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute top-4 left-4 bg-teal-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Imaging</div>
+                </div>
+                <div class="p-8 flex-grow">
+                    <h2 class="font-bold text-xl mb-3 text-blue-900 group-hover:text-teal-700 transition">MRA vs. CTV: The Golden Standard</h2>
+                    <p class="text-slate-500 text-sm leading-relaxed line-clamp-2 italic">Why vascular imaging is the first critical step to identifying the physical source of your sound...</p>
+                </div>
+                <div class="px-8 pb-8 mt-auto flex items-center text-teal-600 font-bold text-xs uppercase tracking-widest">
+                    Read Analysis <i class="fa-solid fa-chevron-right ml-2"></i>
+                </div>
+            </a>
+
+            <a href="blog-2.html" class="blog-card bg-white rounded-3xl overflow-hidden border border-slate-100 flex flex-col group">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=800&q=80" 
+                         onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80'"
+                         class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Technology</div>
+                </div>
+                <div class="p-8 flex-grow">
+                    <h2 class="font-bold text-xl mb-3 text-blue-900 group-hover:text-teal-700 transition">Bimodal Stimulation Tech</h2>
+                    <p class="text-slate-500 text-sm leading-relaxed line-clamp-2 italic">A revolutionary way to retrain your auditory brain using dual-pathway signals to suppress phantom noise...</p>
+                </div>
+                <div class="px-8 pb-8 mt-auto flex items-center text-teal-600 font-bold text-xs uppercase tracking-widest">
+                    Read Analysis <i class="fa-solid fa-chevron-right ml-2"></i>
+                </div>
+            </a>
+
+            <a href="blog-3.html" class="blog-card bg-white rounded-3xl overflow-hidden border border-slate-100 flex flex-col group">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=800&q=80" 
+                         onerror="this.src='https://images.unsplash.com/photo-1516715667182-c511116bd367?auto=format&fit=crop&w=800&q=80'"
+                         class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute top-4 left-4 bg-orange-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Prevention</div>
+                </div>
+                <div class="p-8 flex-grow">
+                    <h2 class="font-bold text-xl mb-3 text-blue-900 group-hover:text-teal-700 transition">The Science of 60/60 Rule</h2>
+                    <p class="text-slate-500 text-sm leading-relaxed line-clamp-2 italic">Understanding decibel limits and the biological recovery time required for inner ear hair cell health...</p>
+                </div>
+                <div class="px-8 pb-8 mt-auto flex items-center text-teal-600 font-bold text-xs uppercase tracking-widest">
+                    Read Analysis <i class="fa-solid fa-chevron-right ml-2"></i>
+                </div>
+            </a>
+
+            </div>
+    </main>
+
+    <section class="max-w-7xl mx-auto px-6 mb-24">
+        <div class="bg-blue-900 rounded-[3rem] p-12 text-center text-white relative overflow-hidden shadow-2xl">
+            <div class="relative z-10">
+                <h2 class="text-3xl font-bold mb-4">Can't find what you're looking for?</h2>
+                <p class="text-blue-200 mb-8 max-w-xl mx-auto text-sm md:text-base">Our medical team is constantly updating this archive. Support our research to help us publish more patient-centric content.</p>
+                <a href="index.html#donate" class="inline-block bg-teal-500 text-white px-10 py-4 rounded-full font-bold hover:bg-teal-400 transition shadow-xl shadow-teal-900/40 uppercase tracking-widest text-sm">Contribute to Science</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-100 py-12 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="font-black text-blue-900 tracking-tighter uppercase mb-2">PULSATILE TINNITUS FOUNDATION INC</p>
+            <p class="text-xs text-slate-400 font-mono tracking-widest">© 2026 | NEW YORK CITY | ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+
+    <script>
+        // Auto-generate Articles 4-20
+        const grid = document.getElementById('blog-grid');
+        const topics = [
+            "Venous Sinus Stenosis: Mechanical Causes",
+            "Sigmoid Sinus Diverticulum Explained",
+            "CBT for Tinnitus: Rewiring the Mind",
+            "The Role of Iron Deficiency in PT",
+            "IIH: Increased Intracranial Hypertension",
+            "Glomus Tumors: A Rare Cause of PT",
+            "Stenting Procedures: Success Rates 2026",
+            "Nutrition & Vascular Health",
+            "Sound Masking: White vs. Brown Noise",
+            "Eagle Syndrome and Tinnitus",
+            "Hearing Aids: Modern Solutions",
+            "Yoga & Blood Flow Regulation",
+            "Medication Side Effects to Watch",
+            "Patient Case Study: Bilateral PT",
+            "The Future of Stem Cell Therapy",
+            "Anxiety & Tinnitus: The Feedback Loop",
+            "How to Speak to Your Insurance"
+        ];
+
+        for(let i=0; i < topics.length; i++) {
+            const articleNum = i + 4;
+            grid.innerHTML += `
+            <div class="blog-card bg-white rounded-3xl overflow-hidden border border-slate-100 flex flex-col opacity-60 filter grayscale-[0.5]">
+                <div class="w-full h-56 bg-slate-200 flex items-center justify-center relative">
+                    <i class="fa-solid fa-lock text-slate-400 text-3xl"></i>
+                    <span class="absolute bottom-4 right-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Coming Soon</span>
+                </div>
+                <div class="p-8 flex-grow">
+                    <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Medical Hub</span>
+                    <h2 class="font-bold text-xl mt-2 text-slate-400">${topics[i]}</h2>
+                    <p class="text-slate-300 text-sm mt-3 italic line-clamp-2 leading-relaxed">Detailed clinical research for article #${articleNum} is currently under peer review.</p>
+                </div>
+                <div class="px-8 pb-8 mt-auto text-slate-300 font-bold text-xs uppercase tracking-widest">
+                    Available Soon <i class="fa-solid fa-clock-rotate-left ml-2"></i>
+                </div>
+            </div>
+            `;
+        }
+    </script>
+
+</body>
+</html>
