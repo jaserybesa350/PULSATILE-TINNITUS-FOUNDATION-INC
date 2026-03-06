@@ -4,43 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PULSATILE TINNITUS FOUNDATION INC | Hear the Silence</title>
+    
     <link rel="preconnect" href="https://images.unsplash.com">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=60" fetchpriority="high">
+
+    <script src="https://cdn.tailwindcss.com" async></script>
     <style>
-        /* 增加 font-display 以加快文字显示速度 */
-        @font-face { font-family: 'sans-serif'; font-display: swap; }
-        
-        html { scroll-behavior: smooth; }
-        
-        /* 优化 Hero 背景：增加加载参数 w=1200 以平衡清晰度与速度 */
+        /* 关键路径 CSS：在 JS 加载前保证首屏不白屏 */
+        body { margin: 0; background-color: #f8fafc; font-family: sans-serif; }
         .hero-gradient { 
             background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 128, 128, 0.6)), 
-            url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80'); 
-            background-size: cover; 
-            background-position: center; 
+            url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=60'); 
+            background-size: cover; background-position: center; height: 100vh; display: flex; align-items: center; justify-content: center;
         }
-
-        /* 动画性能加速 */
-        .faq-content { 
-            max-height: 0; 
-            overflow: hidden; 
-            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            will-change: max-height;
-        }
+        nav { position: fixed; width: 100%; height: 80px; background: rgba(255,255,255,0.9); z-index: 50; }
+        /* 字体交换策略 */
+        @font-face { font-family: 'FontAwesome'; font-display: swap; }
         
+        html { scroll-behavior: smooth; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; }
         .faq-item.active .faq-content { max-height: 500px; }
-        .faq-item.active i { transform: rotate(180deg); color: #0d9488; }
-        
-        .blog-card { 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-            will-change: transform;
-        }
+        .blog-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        
-        /* 防止布局抖动 */
-        img { content-visibility: auto; }
     </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans">
 
@@ -86,8 +76,8 @@
                     <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Psychological Support:</strong> Building a global mutual aid network to reduce patient anxiety.</span></li>
                 </ul>
             </div>
-            <div class="rounded-2xl overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=800&q=80" alt="Medical Communication" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl bg-slate-200">
+                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=700&q=60" alt="Medical Communication" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
@@ -147,9 +137,9 @@
 
             <div class="grid md:grid-cols-3 gap-8">
                 <a href="blog-1.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
-                    <img src="https://images.unsplash.com/photo-1579154233763-540306c48393?auto=format&fit=crop&w=600&q=80" 
-                         onerror="this.src='https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&w=600&q=80'"
-                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Diagnostics" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1579154233763-540306c48393?auto=format&fit=crop&w=500&q=60" 
+                         onerror="this.src='https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&w=500&q=60'"
+                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Diagnostics" loading="lazy" decoding="async">
                     <div class="p-6">
                         <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Diagnostics</span>
                         <h4 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">MRA vs. CTV: The Golden Standard for PT Diagnosis</h4>
@@ -159,9 +149,9 @@
                 </a>
 
                 <a href="blog-2.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
-                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=600&q=80" 
-                         onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&q=80'"
-                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Treatment" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=500&q=60" 
+                         onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=500&q=60'"
+                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Treatment" loading="lazy" decoding="async">
                     <div class="p-6">
                         <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Treatment</span>
                         <h4 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">Bimodal Stimulation: A New Frontier</h4>
@@ -171,9 +161,9 @@
                 </a>
 
                 <a href="blog-3.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
-                    <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=600&q=80" 
-                         onerror="this.src='https://images.unsplash.com/photo-1516715667182-c511116bd367?auto=format&fit=crop&w=600&q=80'"
-                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Prevention" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=500&q=60" 
+                         onerror="this.src='https://images.unsplash.com/photo-1516715667182-c511116bd367?auto=format&fit=crop&w=500&q=60'"
+                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Prevention" loading="lazy" decoding="async">
                     <div class="p-6">
                         <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Prevention</span>
                         <h4 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">The 60/60 Rule: Saving Your Hearing</h4>
@@ -239,30 +229,17 @@
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="font-bold mb-2 text-lg tracking-widest uppercase">PULSATILE TINNITUS FOUNDATION INC</p>
             <p class="text-blue-300 text-sm italic mb-8">Expertise, Compassion, Silence.</p>
-            
             <div class="h-px w-24 bg-blue-800 mx-auto mb-8"></div>
             <p class="text-xs text-blue-400 opacity-60">© 2026 PULSATILE TINNITUS FOUNDATION INC. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // 脚本优化：使用 requestAnimationFrame 确保动画流畅且不阻塞渲染
         function toggleFAQ(button) {
             const item = button.parentElement;
             const isActive = item.classList.contains('active');
-            
-            // 批量处理 DOM 状态以减少重排
-            requestAnimationFrame(() => {
-                document.querySelectorAll('.faq-item').forEach(otherItem => {
-                    if (otherItem !== item) otherItem.classList.remove('active');
-                });
-
-                if (!isActive) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
+            document.querySelectorAll('.faq-item').forEach(otherItem => otherItem.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
         }
     </script>
 </body>
