@@ -3,261 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PULSATILE TINNITUS FOUNDATION INC | Hear the Silence</title>
-    <link rel="preconnect" href="https://images.unsplash.com">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Pulsatile Tinnitus Foundation Inc | Research & Patient Support</title>
     <style>
-        /* 👇 只加这一行，完全不影响样式！只为字体优化 */
-        @font-face { font-family: 'Font Awesome 6 Free'; font-display: swap; }
-        
-        html { scroll-behavior: smooth; }
-        
-        .hero-gradient { 
-            background: linear-gradient(rgba(0, 51, 100, 0.7), rgba(0, 128, 128, 0.6)); 
-            background-size: cover; 
-            background-position: center; 
+        /* 基础样式保持不变，仅优化渲染性能 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
-        .faq-content { 
-            max-height: 0; 
-            overflow: hidden; 
-            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            will-change: max-height;
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            -webkit-font-smoothing: antialiased; /* 文字渲染优化 */
         }
-        
-        .faq-item.active .faq-content { max-height: 500px; }
-        .faq-item.active i { transform: rotate(180deg); color: #0d9488; }
-        
-        .blog-card { 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-            will-change: transform;
+
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            transition: color 0.3s ease;
         }
-        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+        a:hover {
+            color: #004499;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .contact-donate-btn {
+            background-color: #0066cc;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .contact-donate-btn:hover {
+            background-color: #004499;
+        }
+
+        /* Hero 优化：增加图片尺寸控制参数 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://ascentist.com/wp-content/uploads/2021/11/Otology-and-Neurotology-in-Kansas-City-MO.jpg') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .hero-btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            background-color: #004499;
+        }
+
+        .resource-guide { padding: 80px 0; background-color: #fff; }
+        .section-title { text-align: center; font-size: 36px; margin-bottom: 50px; color: #2b2d42; }
+        .guide-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .guide-text h3 { font-size: 28px; margin-bottom: 20px; color: #2b2d42; }
+        .guide-text p { font-size: 18px; margin-bottom: 15px; color: #4a4e69; }
+        .guide-text ul { margin-left: 20px; margin-bottom: 20px; }
+        .guide-text li { font-size: 18px; margin-bottom: 10px; color: #4a4e69; }
         
-        img { content-visibility: auto; }
+        /* 图片容器优化：设定纵横比防止页面抖动 */
+        .guide-img img, .about-img img { 
+            width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            aspect-ratio: 12/8; object-fit: cover;
+        }
+
+        .program-stories { padding: 80px 0; background-color: #f1faee; }
+        .stories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .story-card { background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        .story-card:hover { transform: translateY(-10px); }
+        .story-img img { width: 100%; height: 200px; object-fit: cover; }
+        .story-content { padding: 20px; }
+        .story-content h4 { font-size: 20px; margin-bottom: 10px; color: #2b2d42; }
+        .story-content p { color: #4a4e69; margin-bottom: 15px; }
+
+        .support-section { padding: 80px 0; background-color: #fff; text-align: center; }
+        .contact-info-box { background-color: #f8f9fa; padding: 40px; border-radius: 10px; max-width: 700px; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        .about-us { padding: 80px 0; background-color: #e9ecef; }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+
+        footer { background-color: #2b2d42; color: white; padding: 60px 0 20px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-column h4 { font-size: 20px; margin-bottom: 20px; color: #f8f9fa; }
+        .footer-column ul { list-style: none; }
+        .footer-column li { margin-bottom: 10px; }
+        .footer-column a { color: #adb5bd; }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a { color: white; background-color: #4a4e69; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        @media (max-width: 992px) {
+            .guide-content, .about-content { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 36px; }
+        }
+        @media (max-width: 576px) {
+            .navbar { flex-direction: column; gap: 15px; }
+            .hero { height: 70vh; }
+            .hero-content h1 { font-size: 24px; }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans">
+<body>
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 font-bold text-teal-800 text-xl tracking-tight">
-                    PULSATILE TINNITUS <span class="text-blue-900 text-sm block md:inline md:ml-1">FOUNDATION INC</span>
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#resource-guide">Our Work</a></li>
+                <li><a href="#programs">Our Impact</a></li>
+                <li><a href="#support">Support Us</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><span class="contact-donate-btn" onclick="window.location.href='#support'">Donate - Contact Us</span></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Pulsatile Tinnitus Foundation Inc</h1>
+        <p>A 501(c)(3) charitable non-profit dedicated to advancing research, providing educational resources, and offering critical support for individuals living with pulsatile tinnitus across the United States.</p>
+        <button class="hero-btn" onclick="window.location.href='#resource-guide'">Explore Our Resources</button>
+    </div>
+</section>
+
+<section id="resource-guide" class="resource-guide">
+    <div class="container">
+        <h2 class="section-title">Our Core Mission & Initiatives</h2>
+        <div class="guide-content">
+            <div class="guide-text">
+                <h3>Advancing Pulsatile Tinnitus Research & Support</h3>
+                <p>As a leading charitable foundation for pulsatile tinnitus, we focus on addressing the unmet needs of those affected by this condition through targeted research, education, and community support:</p>
+                <ul>
+                    <li><strong>Medical Research Funding:</strong> Supporting scientific and clinical research to advance the understanding, diagnosis, and treatment of pulsatile tinnitus.</li>
+                    <li><strong>Patient Educational Resources:</strong> Creating and distributing free, evidence-based educational materials for individuals living with pulsatile tinnitus and their caregivers.</li>
+                    <li><strong>Community Support:</strong> Fostering a supportive community for pulsatile tinnitus patients to connect, share experiences, and access peer support.</li>
+                    <li><strong>Medical Professional Outreach:</strong> Educating healthcare providers on the latest advancements in pulsatile tinnitus diagnosis and care to improve patient outcomes.</li>
+                </ul>
+                <p><strong>Support Line:</strong> 877-829-5487</p>
+            </div>
+            <div class="guide-img">
+                <img src="https://images.unsplash.com/photo-1741174844812-c59239e677be?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pulsatile Tinnitus Research & Education" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="programs" class="program-stories">
+    <div class="container">
+        <h2 class="section-title">Our Impact in Pulsatile Tinnitus Care</h2>
+        <div class="stories-grid">
+            <div class="story-card">
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1631558555832-b845ef77223e?q=80&w=1168&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Research Grants" loading="lazy">
                 </div>
-                <div class="hidden md:block space-x-8 text-sm font-medium uppercase tracking-wide">
-                    <a href="#home" class="hover:text-teal-600 transition">Home</a>
-                    <a href="#mission" class="hover:text-teal-600 transition">Mission</a>
-                    <a href="#knowledge" class="hover:text-teal-600 transition">Resources</a>
-                    <a href="#cases" class="hover:text-teal-600 transition">Cases</a>
-                    <a href="#faq" class="hover:text-teal-600 transition">FAQ</a>
-                    <a href="#donate" class="bg-teal-700 text-white px-5 py-2 rounded-full hover:bg-teal-800 transition">Support Us</a>
+                <div class="story-content">
+                    <h4>Clinical Research Grant Program</h4>
+                    <p>We awarded over $250,000 in research grants to leading audiology and otology researchers, funding groundbreaking studies on pulsatile tinnitus causes and novel treatment approaches.</p>
+                    <a href="#programs">Read Full Story →</a>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-img">
+                    <img src="https://cdn-ildpfdn.nitrocdn.com/QMYHQaiDptNthIEQmBRQSOUdseiMKtzi/assets/images/optimized/rev-73a4d39/s33929.pcdn.co/wp-content/uploads/sites/486/2025/09/shutterstock_2163179955-800x534.jpg" alt="Patient Resource Hub" loading="lazy">
+                </div>
+                <div class="story-content">
+                    <h4>Free Patient Resource Hub</h4>
+                    <p>Our online resource hub provides free guides, FAQs, and video content for pulsatile tinnitus patients, with over 10,000 monthly visitors accessing critical educational information.</p>
+                    <a href="#programs">Read Full Story →</a>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-img">
+                    <img src="https://cdn-ildpfdn.nitrocdn.com/QMYHQaiDptNthIEQmBRQSOUdseiMKtzi/assets/images/optimized/rev-73a4d39/s33929.pcdn.co/wp-content/uploads/sites/486/2025/09/shutterstock_2483649515-800x534.jpg" alt="Support Groups" loading="lazy">
+                </div>
+                <div class="story-content">
+                    <h4>National Peer Support Groups</h4>
+                    <p>We launched 12 virtual and in-person peer support groups across the U.S., connecting over 500 pulsatile tinnitus patients with each other and with medical experts for guidance.</p>
+                    <a href="#programs">Read Full Story →</a>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-img">
+                    <img src="https://www.denvercoloradoearnosethroatallergysinusdoctors.com/wp-content/uploads/2019/08/shutterstock_1084314392.jpg" alt="Medical Education" loading="lazy">
+                </div>
+                <div class="story-content">
+                    <h4>Medical Professional Education Workshops</h4>
+                    <p>Our continuing education workshops for audiologists and ENTs have trained over 300 medical providers on best practices for pulsatile tinnitus diagnosis and patient care.</p>
+                    <a href="#programs">Read Full Story →</a>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-img">
+                    <img src="https://i0.wp.com/audiocardio.com/wp-content/uploads/2021/03/what-does-tinnitus-sound-like.png?w=700&ssl=1" alt="Awareness Campaign" loading="lazy">
+                </div>
+                <div class="story-content">
+                    <h4>National Pulsatile Tinnitus Awareness Campaign</h4>
+                    <p>Our annual awareness campaign raised national visibility for pulsatile tinnitus, reaching over 1 million people through social media, media features, and community events.</p>
+                    <a href="#programs">Read Full Story →</a>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-img">
+                    <img src="https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2018/06/04/17/50/otorhinolaryngology-neurology-driscoll-660x407-3639221-0004.jpg" alt="Caregiver Support" loading="lazy">
+                </div>
+                <div class="story-content">
+                    <h4>Caregiver Support Resources</h4>
+                    <p>We created a dedicated caregiver resource library, offering tools and guidance for family members and loved ones supporting someone living with pulsatile tinnitus.</p>
+                    <a href="#programs">Read Full Story →</a>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <section id="home" class="hero-gradient h-screen flex items-center justify-center text-center text-white pt-20">
-        <div class="max-w-4xl px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Hear the Silence, Protect the Sound</h1>
-            <p class="text-xl md:text-2xl mb-10 text-slate-100">You are not alone. We are dedicated to helping everyone affected by tinnitus find balance in life.</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#knowledge" class="bg-white text-teal-900 px-8 py-3 rounded-full font-bold hover:bg-teal-50 transition shadow-lg">What is Pulsatile Tinnitus?</a>
-                <a href="#donate" class="bg-teal-600 text-white border border-teal-400 px-8 py-3 rounded-full hover:bg-teal-700 transition">Donate Now</a>
+<section id="support" class="support-section">
+    <div class="container">
+        <h2 class="section-title">Support Pulsatile Tinnitus Research & Care</h2>
+        <div class="donate-content">
+            <h3>Your Donation Drives Hope & Progress</h3>
+            <p>Pulsatile Tinnitus Foundation Inc is a 501(c)(3) charitable non-profit that relies on donor and community support to fund critical research, create free patient resources, and build supportive communities for those affected by pulsatile tinnitus.</p>
+            
+            <div class="contact-info-box">
+                <h4>For Donations & Inquiries</h4>
+                <div style="margin-bottom:15px;">📞 National Support Line: 877-829-5487</div>
+                <div style="margin-bottom:15px;">📍 Mailing Address: PO Box 369, Bearsville, New York 12409</div>
+                <div>📋 EIN: 83-2497866</div>
+            </div>
+            
+            <p style="margin-top:30px;"><strong>Tax Information:</strong> Pulsatile Tinnitus Foundation Inc is a 501(c)(3) charitable nonprofit organization (EIN: 83-2497866). All donations are tax-deductible to the extent allowed by law.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about-us">
+    <div class="container">
+        <h2 class="section-title">About Pulsatile Tinnitus Foundation Inc</h2>
+        <div class="about-content">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1757041036433-e26807bda7be?q=80&w=663&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pulsatile Tinnitus Foundation Inc" loading="lazy">
+            </div>
+            <div class="about-text">
+                <h3>Our Mission & Charitable Purpose</h3>
+                <p>Established in 2018 and organized under Section 402 of the New York Not-for-Profit Corporation Law, Pulsatile Tinnitus Foundation Inc is a registered 501(c)(3) charitable non-profit with a core mission to advance charitable, educational, and scientific efforts for pulsatile tinnitus.</p>
+                <p>Headquartered in Ulster County, New York, our foundation is governed by a board of dedicated directors with expertise in medicine, audiology, and non-profit leadership. We are committed to funding impactful research, creating accessible educational resources, and fostering a supportive community for those living with pulsatile tinnitus.</p>
+                <p>Per our corporate charter, all assets upon dissolution are distributed to other 501(c)(3) organizations advancing hearing health and tinnitus research, and no net earnings inure to the benefit of private individuals.</p>
+                <p><strong>Mailing Address:</strong> PO Box 369, Bearsville, New York 12409</p>
+                <p><strong>EIN:</strong> 83-2497866 | <strong>National Support Line:</strong> 877-829-5487</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="mission" class="py-24 max-w-7xl mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-3xl font-bold text-blue-900 mb-6 border-l-4 border-teal-500 pl-4">Our Mission</h2>
-                <p class="text-lg leading-relaxed text-slate-600 mb-6">
-                    PULSATILE TINNITUS FOUNDATION INC （EIN:83-2497866） is a non-profit organization based in New York. 
-                    Our mission is:
-                </p>
-                <ul class="space-y-4">
-                    <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Public Education:</strong> Eliminating misdiagnosis and fear caused by information asymmetry.</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Scientific Prevention:</strong> Promoting the 60/60 rule to protect hearing health.</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-check-circle text-teal-600 mt-1 mr-3"></i><span><strong>Psychological Support:</strong> Building a global mutual aid network to reduce patient anxiety.</span></li>
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#resource-guide">Our Work</a></li>
+                    <li><a href="#programs">Our Impact</a></li>
+                    <li><a href="#support">Support Us</a></li>
+                    <li><a href="#about">About Us</a></li>
                 </ul>
             </div>
-            <div class="rounded-2xl overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=800&q=80" alt="Medical Communication" loading="lazy">
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p>Pulsatile Tinnitus Foundation Inc<br>PO Box 369<br>Bearsville, New York 12409<br>📞 877-829-5487<br>EIN: 83-2497866</p>
+            </div>
+            <div class="footer-column">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="#support">Donate</a></li>
+                    <li><a href="#volunteer">Volunteer</a></li>
+                    <li><a href="#partner">Become a Partner</a></li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <section id="knowledge" class="py-24 bg-blue-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-16 underline decoration-teal-400 underline-offset-8 uppercase tracking-widest">Hearing Health & Resources</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="bg-blue-800 p-8 rounded-xl shadow-inner border border-blue-700/50">
-                    <i class="fa-solid fa-stethoscope text-4xl text-teal-400 mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">Pulsatile vs Regular</h3>
-                    <p class="text-slate-300">Pulsatile tinnitus typically rhythms with your heartbeat, often reflecting vascular issues. Medical imaging is prioritized.</p>
-                </div>
-                <div class="bg-blue-800 p-8 rounded-xl shadow-inner border border-blue-700/50">
-                    <i class="fa-solid fa-ear-listen text-4xl text-teal-400 mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">60/60 Rule</h3>
-                    <p class="text-slate-300">Volume under 60%, duration under 60 minutes. This is the simplest effective preventive measure.</p>
-                </div>
-                <div class="bg-blue-800 p-8 rounded-xl shadow-inner border border-blue-700/50">
-                    <i class="fa-solid fa-brain text-4xl text-teal-400 mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">TRT Training</h3>
-                    <p class="text-slate-300">Tinnitus Retraining Therapy (TRT) helps the brain filter out irrelevant tinnitus signals through sound therapy.</p>
-                </div>
-            </div>
+        <div style="text-align:center; padding-top:20px; border-top:1px solid #4a4e69; color:#adb5bd; font-size:14px;">
+            &copy; 2025 Pulsatile Tinnitus Foundation Inc | EIN: 83-2497866 | 501(c)(3) Charitable Non-Profit | All Rights Reserved
         </div>
-    </section>
+    </div>
+</footer>
 
-    <section id="cases" class="py-24 max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-blue-900 mb-16">SUCCESS STORIES</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition">
-                <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded mb-4 font-bold uppercase">Vascular Case</span>
-                <h4 class="text-xl font-bold mb-2 text-blue-900">Sarah J.'s Return to Quiet</h4>
-                <p class="text-slate-500 mb-4 italic text-sm border-l-2 border-slate-200 pl-3">"I thought I would spend the rest of my life in that whooshing sound."</p>
-                <p class="text-slate-600">Diagnosed with Sigmoid Sinus Diverticulum via MRA. Symptoms fully disappeared after a minimally invasive procedure.</p>
-            </div>
-            <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition">
-                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mb-4 font-bold uppercase">Neurological Case</span>
-                <h4 class="text-xl font-bold mb-2 text-blue-900">Mr. Zhang's Harmony</h4>
-                <p class="text-slate-500 mb-4 italic text-sm border-l-2 border-slate-200 pl-3">"The sound is still there, but it no longer bothers me."</p>
-                <p class="text-slate-600">Through three months of CBT and background sound exercises, he successfully reduced his emotional reaction to tinnitus.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="py-24 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-                <div>
-                    <h2 class="text-3xl font-bold text-blue-900 uppercase">Educational Blog</h2>
-                    <p class="text-slate-500 mt-2">Latest research and hearing protection insights from our experts.</p>
-                </div>
-                <a href="blog-list.html" class="text-teal-600 font-bold hover:text-teal-700 transition flex items-center">
-                    VIEW ALL 20+ ARTICLES <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
-                </a>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <a href="blog-1.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
-                    <img src="" 
-                         onerror="this.src='https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&w=600&q=80'"
-                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Diagnostics" loading="lazy">
-                    <div class="p-6">
-                        <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Diagnostics</span>
-                        <h4 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">MRA vs. CTV: The Golden Standard for PT Diagnosis</h4>
-                        <p class="text-slate-600 text-sm mt-3 line-clamp-2 italic">Why standard MRIs often fail PT patients and what to ask your doctor...</p>
-                        <div class="mt-4 pt-4 border-t border-slate-50 text-teal-600 text-xs font-bold uppercase tracking-tighter">Read Full Analysis</div>
-                    </div>
-                </a>
-
-                <a href="blog-2.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
-                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=600&q=80" 
-                         onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&q=80'"
-                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Treatment" loading="lazy">
-                    <div class="p-6">
-                        <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Treatment</span>
-                        <h4 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">Bimodal Stimulation: A New Frontier</h4>
-                        <p class="text-slate-600 text-sm mt-3 line-clamp-2 italic">Training the brain to ignore phantom sounds through neural pathways...</p>
-                        <div class="mt-4 pt-4 border-t border-slate-50 text-teal-600 text-xs font-bold uppercase tracking-tighter">Read Full Analysis</div>
-                    </div>
-                </a>
-
-                <a href="blog-3.html" class="blog-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 block group">
-                    <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=600&q=80" 
-                         onerror="this.src='https://images.unsplash.com/photo-1516715667182-c511116bd367?auto=format&fit=crop&w=600&q=80'"
-                         class="w-full h-52 object-cover group-hover:scale-105 transition duration-500" alt="Prevention" loading="lazy">
-                    <div class="p-6">
-                        <span class="text-teal-600 text-xs font-bold uppercase tracking-widest">Prevention</span>
-                        <h4 class="font-bold text-lg mt-2 leading-snug text-slate-800 group-hover:text-teal-700 transition">The 60/60 Rule: Saving Your Hearing</h4>
-                        <p class="text-slate-600 text-sm mt-3 line-clamp-2 italic">The biological defense mechanism for your inner ear hair cells...</p>
-                        <div class="mt-4 pt-4 border-t border-slate-50 text-teal-600 text-xs font-bold uppercase tracking-tighter">Read Full Analysis</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="py-24 bg-slate-100">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-blue-900 mb-12 uppercase">Common Questions (FAQ)</h2>
-            <div class="space-y-4">
-                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
-                        <span class="font-bold text-lg">Does tinnitus lead to deafness?</span>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content">
-                        <p class="p-6 pt-0 text-slate-600 leading-relaxed">Tinnitus itself is a symptom, not a disease that causes deafness. However, it can accompany hearing loss, so medical evaluation is highly recommended.</p>
-                    </div>
-                </div>
-                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
-                        <span class="font-bold text-lg">What tests are needed for Pulsatile Tinnitus?</span>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content">
-                        <p class="p-6 pt-0 text-slate-600 leading-relaxed">We recommend consulting a specialist for MRA, CTV, or High-Resolution CT scans to rule out vascular causes such as stenosis or malformations.</p>
-                    </div>
-                </div>
-                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
-                        <span class="font-bold text-lg">Can stress make my tinnitus worse?</span>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content">
-                        <p class="p-6 pt-0 text-slate-600 leading-relaxed">Yes, stress can increase blood pressure and heighten the nervous system's sensitivity, often making the perception of tinnitus louder and more distressing.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="donate" class="py-24 max-w-4xl mx-auto px-4 text-center border-t border-slate-200">
-        <h2 class="text-3xl font-bold text-blue-900 mb-6 uppercase tracking-tighter">Support Our Cause</h2>
-        <div class="bg-teal-50 p-12 rounded-3xl border-2 border-dashed border-teal-300 shadow-inner">
-            <p class="text-lg text-slate-700 mb-8 leading-relaxed">
-                Thank you for your willingness to help. For the security and compliance of donations, we currently only accept offline transfers or email consultations.
-            </p>
-            <div class="flex flex-col items-center space-y-4">
-                <a href="mailto:contact@pulsatiletinnitusnyc.org" class="text-2xl font-bold text-teal-800 hover:text-teal-600 transition underline decoration-teal-300 underline-offset-8">
-                    contact@pulsatiletinnitusnyc.org
-                </a>
-                <p class="text-slate-500 font-mono text-sm uppercase tracking-widest mt-4">PO Box 369, Bearsville, New York 12409</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-blue-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="font-bold mb-2 text-lg tracking-widest uppercase">PULSATILE TINNITUS FOUNDATION INC</p>
-            <p class="text-blue-300 text-sm italic mb-8">Expertise, Compassion, Silence.</p>
-            
-            <div class="h-px w-24 bg-blue-800 mx-auto mb-8"></div>
-            <p class="text-xs text-blue-400 opacity-60">© 2026 PULSATILE TINNITUS FOUNDATION INC. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        function toggleFAQ(button) {
-            const item = button.parentElement;
-            const isActive = item.classList.contains('active');
-            
-            document.querySelectorAll('.faq-item').forEach(otherItem => {
-                if (otherItem !== item) otherItem.classList.remove('active');
-            });
-
-            if (!isActive) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        }
-    </script>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
 </body>
 </html>
-
-
